@@ -8,16 +8,78 @@
 <body>
     <input id = "ImageTitle" placeholder="Title" />
     <input id = "ImageDescription" placeholder="Description" />
+    <form id='myForm'>
+        <input type='file' id='UploadFiles' multiple/>
+        <button id='uploadBut'>Upload image to DB</button>
+    </form>
+
     <button id = "PostImageBut">Post</button>
     
     <br></br>
     
     <a href="Login.html">Back to Login</a>
+    
 </body>
     <script>
-        $(document).ready(function(){
+        var uploadfiles = document.getElementById("UploadFiles");
+        var upload = document.getElementById("PostImageBut");
+
+        upload.onclick = function(e){
+            e.preventDefault();
+
+            var formData = new FormData();
+
+            var allFiles = uploadfiles.files;
+
+            for(var i = 0; i<allFiles.length; i++){
+                var file = allFiles[i];
+
+                if(file.type.match("image/*")){
+                    formData.append("images[]", file, "file");
+                    formData.append("user_id", 2);
+                } else {
+                    alert("Please select an image file.");
+                    return false;
+                }
+
+
+            }
+            var xhr = new XMLHttpRequest();
             
-        });
+            xhr.open("POST", "../model/ImageUpload.php", true);
+            xhr.onload = function(){
+                if(xhr.status == 200){
+                    alert("Loaded ImageUpload.php successfully");
+                }
+                if(xhr.status == 404){
+                    alert("PAGE NOT FOUND!!");
+                }
+            }
+
+            xhr.send(formData);
+            console.log(myfiles.files);
+        }
+        
+        
+                $(document).ready(function(){
+                document.getElementById("uploadBut").onclick = function(){
+                    $.ajax({
+                        url:"../controller/ImageCont.php",
+                        dataType:"html",
+                        type:"POST",
+                        data:{
+                            method:"insert",
+                            title:document.getElementById("ImageTitle").value,
+                            description:document.getElementById("ImageDescription").value,
+                            path:document.getElementById("UploadFiles").value
+                        },
+                        success:function(resp){
+                            alert("Image successfully posted!");
+                            }
+                        });
+                    }
+
+                });
     </script>
     
 </html>
