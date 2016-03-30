@@ -8,4 +8,8 @@ if($_POST['method'] == "insert"){
 if($_POST['method'] == "login"){
     get_user();
 }
+
+if($_POST['method'] == "update"){
+    update_user();
+}
 ?>
