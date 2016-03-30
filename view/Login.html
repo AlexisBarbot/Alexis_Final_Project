@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Alexis Final Project</title>
+    <meta charset="utf-8"/>
+    </head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+<body>
+    <input id = "UsernameLogin" placeholder="Username" />
+    <input id = "PasswordLogin" placeholder="Password" type = "password" />
+    <button id = "LoginButton">Login</button>
+    
+    <br></br>
+    
+    <a href="UpdatePassword.html">Change Password</a>
+    <a href="ImageUpload.html">Upload Image</a>
+    
+</body>
+    <script>
+        
+        $(document).ready(function(){
+            
+            var user_id = -1;
+            document.getElementById("LoginButton").onclick = function(){
+                $.ajax({
+                    url:"../controller/UserCont.php",
+                    dataType:"json",
+                    type:"POST",
+                    data:{
+                        method:"login",
+                        username:document.getElementById("UsernameLogin").value,
+                        password:document.getElementById("PasswordLogin").value
+                    },
+                    success:function(resp){
+                        alert("User successfully logged in!");
+                        console.log(resp);
+                        user_id = resp[0].id;
+                        sessionStorage.myid = resp[0].id;
+                    }
+                });
+            }
+            
+        });
+    
+    </script>
+</html>

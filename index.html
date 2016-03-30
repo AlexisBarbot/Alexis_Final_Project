@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Alexis Final Project</title>
+    <meta charset="utf-8"/>
+    </head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+<body>
+    <input id = "UsernameSignUp" placeholder="Username" />
+    <input id = "PasswordSignUp" placeholder="Password" type = "password" />
+    <button id = "RegisterButton">Register</button>
+    
+    <br></br>
+    
+    <a href="view/Login.html">Login</a>
+</body>
+
+<script>
+$(document).ready(function(){
+    document.getElementById("RegisterButton").onclick = function(){
+            alert("clicked");
+            //ajax
+            $.ajax({
+                url:"./controller/UserCont.php",
+                dataType:"html",
+                type:"POST",
+                data:{
+                    method:"insert",
+                    username:document.getElementById("UsernameSignUp").value,
+                    password:document.getElementById("PasswordSignUp").value
+                },
+                success:function(resp){
+                    alert("User successfully created!");
+                }
+            });
+        }
+
+    });
+</script>
+
+</html>
