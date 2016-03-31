@@ -12,8 +12,30 @@
 </body>
     
     <script>
+        var deletePic = function(id){
+                                console.log(id);
+                                
+                            $.ajax({
+                                url:"../controller/imageCont.php",
+                                dataType:"json",
+                                type:"POST",
+                                data:{
+                                    method:"delete",
+                                    imageId: id
+                                    
+                                },
+                                success:function(resp){
+                                    console.log(resp);
+                                    alert("Image successfully deleted!");
+                                    location.reload();
+                                    }
+                                });
+            
+                            }
         
         $(document).ready(function(){
+            
+            
 
             $.ajax({
                 url:"../controller/ImageCont.php",
@@ -78,7 +100,7 @@
                         var btn = document.createElement("button");
                         btn.innerHTML = "Delete";
                         btn.setAttribute("id", "DeleteBut");
-                        btn.setAttribute("imageID",gallery[i].id);
+                        btn.setAttribute("onclick","deletePic("+gallery[i].id+")");
                         document.getElementById("display").appendChild(btn);
                         
                         var brk = document.createElement("br");
@@ -139,26 +161,6 @@
             
                             }
                             
-                            document.getElementById("DeleteBut").onclick = function(){
-                                console.log(this.getAttribute("imageID"));
-                                
-                            $.ajax({
-                                url:"../controller/imageCont.php",
-                                dataType:"json",
-                                type:"POST",
-                                data:{
-                                    method:"delete",
-                                    imageId: this.getAttribute("imageID")
-                                    
-                                },
-                                success:function(resp){
-                                    console.log(resp);
-                                    alert("Image successfully deleted!");
-                                    location.reload();
-                                    }
-                                });
-            
-                            }
                         
                     }
                 }

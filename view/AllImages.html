@@ -44,11 +44,22 @@
                         var brk = document.createElement("br");
                         document.getElementById("display").appendChild(brk);
                         
-                        var cmt = document.createElement("textarea")
+                        var cmt = document.createElement("input");
                         cmt.placeholder = "Enter your comment";
                         cmt.setAttribute("id", "ImageComment");
                         document.getElementById("display").appendChild(cmt);
                         
+                        var commentBut = document.createElement("button");
+                        commentBut.innerHTML = "Post";
+                        commentBut.setAttribute("id", "CommentBut");
+                        document.getElementById("display").appendChild(commentBut);
+                     
+                        document.getElementById("CommentBut").onclick = function(){
+                                
+                           alert("clicked");
+            
+            
+                            }
                     }
                 }
             });
