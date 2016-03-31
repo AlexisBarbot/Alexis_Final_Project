@@ -6,6 +6,45 @@
     </head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 <body>
-    
+    <div id="display"></div>
 </body>
+    
+    <script>
+        
+        $(document).ready(function(){
+
+            $.ajax({
+                url:"../controller/ImageCont.php",
+                dataType:"html",
+                type:"POST",
+                data:{
+                    method:"display",
+                    user_id:localStorage.getItem("user_id")
+                    //take this out ^ for all images page
+                },
+                success:function(resp){
+                    console.log(JSON.parse(resp));
+                    var gallery = JSON.parse(resp);
+                    for(var i = 0; i<gallery.length;i++){
+                        var img = document.createElement("img");
+                        img.src = gallery[i].path;
+                        
+                        var h = document.createElement("h2");
+                        h.innerHTML = gallery[i].title;
+                        console.log(gallery[i].title);
+                        h.appendChild(img);
+                        document.getElementById("display").appendChild(h);
+                        
+                        var p = document.createElement("p");
+                        p.innerHTML = gallery[i].description;
+                        console.log(gallery[i].description);
+                        p.appendChild(img);
+                        document.getElementById("display").appendChild(p);
+                    }
+                }
+            });
+
+    });
+        
+    </script>
 </html>

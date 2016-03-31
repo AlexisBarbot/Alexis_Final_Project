@@ -26,7 +26,24 @@ function get_images_user_id(){
     echo json_encode($result->fetchAll());
 }
 
+function display_images_user(){
+    global $db;
+    
+    $query = "SELECT * FROM `images` WHERE user_id = ".$_POST['user_id']."";
+    $result = $db->query($query);
+    echo json_encode($result->fetchAll());
+}
+
+function display_all_images(){
+    global $db;
+    
+    $query = "SELECT * FROM `images`";
+    $result = $db->query($query);
+    echo json_encode($result->fetchAll());
+}
+
 function update_image(){
+    
 }
 
 function delete_image(){ 
