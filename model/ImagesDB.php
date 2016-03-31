@@ -42,11 +42,28 @@ function display_all_images(){
     echo json_encode($result->fetchAll());
 }
 
-function update_image(){
+function update_title(){
+    global $db;
     
+    $query = "UPDATE title FROM images WHERE id = ".$_POST['imageId']."";
+    $result = count($db->query($query));
+    echo json_encode($result);
 }
 
 function delete_image(){ 
+    global $db;
+    
+    $query = "DELETE FROM images WHERE id = ".$_POST['imageId']."";
+    $result = count($db->query($query));
+    echo json_encode($result);
+}
+
+function display_all_titles(){
+    global $db;
+    
+    $query = "SELECT title FROM `images`";
+    $result = $db->query($query);
+    echo json_encode($result->fetchAll());
 }
 
 ?>

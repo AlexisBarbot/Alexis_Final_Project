@@ -16,4 +16,17 @@ if($_POST['method'] == "display"){
 if($_POST['method'] == "display_all"){
     display_all_images();
 }
+
+if($_POST['method'] == "delete"){
+    delete_image();
+}
+
+if($_POST['method'] == "update_image_title"){
+    update_title();
+}
+
+if($_POST['method'] == "display_titles"){
+    display_all_titles();
+}
+
 ?>

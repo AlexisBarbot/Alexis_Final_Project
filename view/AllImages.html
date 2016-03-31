@@ -3,9 +3,11 @@
   <head>
     <title>Alexis Final Project</title>
     <meta charset="utf-8"/>
+    <link href="../css/Alexis_Main_CSS.css" rel="stylesheet" type="text/css">
     </head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 <body>
+    <a href="Login.html">Back to Login</a><br></br>
     <div id="display"></div>
 </body>
     
@@ -41,6 +43,11 @@
                         
                         var brk = document.createElement("br");
                         document.getElementById("display").appendChild(brk);
+                        
+                        var cmt = document.createElement("textarea")
+                        cmt.placeholder = "Enter your comment";
+                        cmt.setAttribute("id", "ImageComment");
+                        document.getElementById("display").appendChild(cmt);
                         
                     }
                 }
