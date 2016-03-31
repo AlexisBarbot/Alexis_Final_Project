@@ -1,13 +1,9 @@
 <?php
 
-include("../model/UsersDB.php");
+include("../model/CommentsDB.php");
 
 if($_POST['method'] == "insert"){
-    insert_user();
-}
-
-if($_POST['method'] == "login"){
-    get_user();
+    add_comment();
 }
 
 ?>

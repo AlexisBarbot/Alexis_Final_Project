@@ -33,6 +33,50 @@
             
                             }
         
+        var updateTitle = function(id){
+                            console.log(document.getElementById("EditTitleInput" + id).value);
+                            $.ajax({
+                                url:"../controller/ImageCont.php",
+                                dataType:"json",
+                                type:"POST",
+                                data:{
+                                    method:"update_image_title",
+                                    imageId: id,
+                                    title:document.getElementById("EditTitleInput" + id).value
+                                    
+                                },
+                                success:function(resp){
+                                    console.log(resp);
+                                    alert("Title successfully updated!");
+                                    location.reload();
+                                    }
+                                });
+            
+            
+                            }
+        
+        var updateDescription = function(id){
+                            console.log(document.getElementById("EditDescriptionInput" + id).value);
+                            $.ajax({
+                                url:"../controller/ImageCont.php",
+                                dataType:"json",
+                                type:"POST",
+                                data:{
+                                    method:"update_image_description",
+                                    imageId: id,
+                                    description:document.getElementById("EditDescriptionInput" + id).value
+                                    
+                                },
+                                success:function(resp){
+                                    console.log(resp);
+                                    alert("Title successfully updated!");
+                                    location.reload();
+                                    }
+                                });
+            
+            
+                            }
+        
         $(document).ready(function(){
             
             
@@ -70,12 +114,13 @@
                         
                         var editTitle = document.createElement("input");
                         editTitle.placeholder = "Edit Title";
-                        editTitle.setAttribute("id", "EditTitleInput");
+                        editTitle.setAttribute("id", "EditTitleInput" + gallery[i].id);
                         document.getElementById("display").appendChild(editTitle);
                         
                         var updateTitleButton = document.createElement("button");
                         updateTitleButton.innerHTML = "Update";
-                        updateTitleButton.setAttribute("id", "UpdateTitleBut");
+                        updateTitleButton.setAttribute("onclick","updateTitle("+gallery[i].id+")");
+                        //updateTitleButton.setAttribute("id", "UpdateTitleBut");
                         document.getElementById("display").appendChild(updateTitleButton);
                         
                         var brk = document.createElement("br");
@@ -83,12 +128,13 @@
                         
                         var editDescription = document.createElement("input");
                         editDescription.placeholder = "Edit Description";
-                        editDescription.setAttribute("id", "EditDescriptionInput");
+                        editDescription.setAttribute("id", "EditDescriptionInput" + gallery[i].id);
                         document.getElementById("display").appendChild(editDescription);
                         
                         var updateDescriptionButton = document.createElement("button");
                         updateDescriptionButton.innerHTML = "Update";
-                        updateDescriptionButton.setAttribute("id", "UpdateDescriptionBut");
+                        updateDescriptionButton.setAttribute("onclick","updateDescription("+gallery[i].id+")");
+                        //updateDescriptionButton.setAttribute("id", "UpdateDescriptionBut");
                         document.getElementById("display").appendChild(updateDescriptionButton);
                         
                         var brk = document.createElement("br");
@@ -133,33 +179,6 @@
             
                             }*/
                             
-                            document.getElementById("UpdateTitleBut").onclick = function(){
-                                
-                            $.ajax({
-                                url:"../controller/imageCont.php",
-                                dataType:"json",
-                                type:"POST",
-                                data:{
-                                    method:"update_image_title",
-                                    imageId: this.getAttribute("imageID"),
-                                    title:document.getElementById("EditTitleInput").value
-                                    
-                                },
-                                success:function(resp){
-                                    console.log(resp);
-                                    alert("Title successfully updated!");
-                                    location.reload();
-                                    }
-                                });
-            
-            
-                            }
-                            
-                            document.getElementById("UpdateDescriptionBut").onclick = function(){
-                                
-                            alert("click2")
-            
-                            }
                             
                         
                     }

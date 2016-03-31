@@ -25,6 +25,10 @@ if($_POST['method'] == "update_image_title"){
     update_title();
 }
 
+if($_POST['method'] == "update_image_description"){
+    update_description();
+}
+
 if($_POST['method'] == "display_titles"){
     display_all_titles();
 }

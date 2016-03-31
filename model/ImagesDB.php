@@ -45,7 +45,15 @@ function display_all_images(){
 function update_title(){
     global $db;
     
-    $query = "UPDATE title FROM images WHERE id = ".$_POST['imageId']."";
+    $query = "UPDATE `finalproject`.`images` SET `title` = '".$_POST['title']."' WHERE `images`.`id` = '".$_POST['imageId']."';";
+    $result = count($db->query($query));
+    echo json_encode($result);
+}
+
+function update_description(){
+    global $db;
+    
+    $query = "UPDATE `finalproject`.`images` SET `description` = '".$_POST['description']."' WHERE `images`.`id` = '".$_POST['imageId']."';";
     $result = count($db->query($query));
     echo json_encode($result);
 }

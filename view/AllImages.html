@@ -13,6 +13,33 @@
     
     <script>
         
+        var AddComment = function(id){
+                            console.log(document.getElementById("CommentInput" + id).value);
+                            alert("click");
+            
+                            $.ajax({
+                                url:"../controller/CommentCont.php",
+                                dataType:"json",
+                                type:"POST",
+                                data:{
+                                    method:"insert",
+                                    imageId: id,
+                                    comment:document.getElementById("CommentInput" + id).value,
+                                    userId: localStorage.getItem("user_id")
+                                    
+                                    
+                                },
+                                success:function(resp){
+                                    console.log(resp);
+                                    alert("Comment successfully posted!");
+                                    //location.reload();
+                                    }
+                                });
+            
+            
+                            }
+        
+        
         $(document).ready(function(){
 
             $.ajax({
@@ -44,22 +71,25 @@
                         var brk = document.createElement("br");
                         document.getElementById("display").appendChild(brk);
                         
+                        var DisplayDiv = document.createElement("div");
+                        document.getElementById("display").appendChild(DisplayDiv);
+                        
                         var cmt = document.createElement("input");
                         cmt.placeholder = "Enter your comment";
-                        cmt.setAttribute("id", "ImageComment");
+                        cmt.setAttribute("id", "CommentInput" + gallery[i].id);
                         document.getElementById("display").appendChild(cmt);
                         
                         var commentBut = document.createElement("button");
                         commentBut.innerHTML = "Post";
-                        commentBut.setAttribute("id", "CommentBut");
+                        commentBut.setAttribute("onclick", "AddComment("+gallery[i].id+")");
                         document.getElementById("display").appendChild(commentBut);
                      
-                        document.getElementById("CommentBut").onclick = function(){
+                       /* document.getElementById("CommentBut").onclick = function(){
                                 
                            alert("clicked");
             
             
-                            }
+                            }*/
                     }
                 }
             });
