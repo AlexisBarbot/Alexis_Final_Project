@@ -18,9 +18,7 @@
                 dataType:"html",
                 type:"POST",
                 data:{
-                    method:"display",
-                    user_id:localStorage.getItem("user_id")
-                    //take this out ^ for all images page
+                    method:"display_all",
                 },
                 success:function(resp){
                     console.log(JSON.parse(resp));
@@ -40,6 +38,10 @@
                         console.log(gallery[i].description);
                         p.appendChild(img);
                         document.getElementById("display").appendChild(p);
+                        
+                        var brk = document.createElement("br");
+                        document.getElementById("display").appendChild(brk);
+                        
                     }
                 }
             });

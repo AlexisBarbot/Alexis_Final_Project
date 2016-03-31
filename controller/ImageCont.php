@@ -12,4 +12,8 @@ if($_POST['method'] == "get_images_userID"){
 if($_POST['method'] == "display"){
     display_images_user();
 }
+
+if($_POST['method'] == "display_all"){
+    display_all_images();
+}
 ?>
