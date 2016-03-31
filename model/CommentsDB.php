@@ -11,4 +11,12 @@ function add_comment(){
     $result = $db->query($query);
 }
 
+function display_comments(){
+    global $db;
+    
+    $query = "SELECT text FROM `comments` WHERE id = ".$_POST['imageId']."";
+    $result = $db->query($query);
+    echo json_encode($result->fetchAll());
+}
+
 ?>

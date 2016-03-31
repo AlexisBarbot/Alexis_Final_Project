@@ -39,9 +39,30 @@
             
                             }
         
+        var ShowComments = function(id){
+                            $.ajax({
+                                url:"../controller/CommentCont.php",
+                                dataType:"html",
+                                type:"POST",
+                                data:{
+                                    method:"display_comments",
+                                    imageId: id
+                                },
+                                success:function(resp){
+                                    console.log(JSON.parse(resp));
+                                    var gallery2 = JSON.parse(resp);
+                                    for(var i = 0; i<gallery.length;i++){
+
+                                        var pComment = document.createElement("p");
+                                        pComment.innerHTML = gallery2[i].comment;
+                                        document.getElementById("display").appendChild(pComment);
+                                    }
+                                }
+                            });
+                        }
         
         $(document).ready(function(){
-
+            
             $.ajax({
                 url:"../controller/ImageCont.php",
                 dataType:"html",
@@ -72,6 +93,7 @@
                         document.getElementById("display").appendChild(brk);
                         
                         var DisplayDiv = document.createElement("div");
+                        DisplayDiv.setAttribute("id", "DisplayDivComment" + gallery[i].id);
                         document.getElementById("display").appendChild(DisplayDiv);
                         
                         var cmt = document.createElement("input");
@@ -83,6 +105,12 @@
                         commentBut.innerHTML = "Post";
                         commentBut.setAttribute("onclick", "AddComment("+gallery[i].id+")");
                         document.getElementById("display").appendChild(commentBut);
+                        
+                        var showBut = document.createElement("button");
+                        showBut.innerHTML = "View all";
+                        showBut.setAttribute("onclick", "ShowComments("+gallery[i].id+")");
+                        showBut.setAttribute("id", "ShowCommentsBut");
+                        document.getElementById("display").appendChild(showBut);
                      
                        /* document.getElementById("CommentBut").onclick = function(){
                                 
