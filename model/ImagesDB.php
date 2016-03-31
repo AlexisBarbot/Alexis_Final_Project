@@ -1,17 +1,19 @@
 <?php
 include("DB_Connector.php");
 
-function add_image(){
+function add_image($path){
     global $db;
-    
-    $query = "INSERT INTO images (title, description, path, user_id) VALUES ('".$_POST['title']."', '".$_POST['description']."', '".$_POST['path']."', ".$_POST['user_id'].")";
+    echo $_POST['user_id'];
+    echo $path;
+    $query = "INSERT INTO `finalproject`.`images` (`id`, `title`, `description`, `path`, `user_id`) VALUES (NULL, '".$_POST['title']."', '".$_POST['description']."', '".$path."', '".$_POST['user_id']."')";
+    echo $query;
     $result = $db->query($query);
 }
 
 function get_images(){
     global $db;
     
-    $query = "SELECT title, path, user_id FROM images";
+    $query = "SELECT title, description, path, user_id FROM images";
     $result = $db->query($query);
     echo json_encode($result->fetchAll());
 }

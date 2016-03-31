@@ -10,10 +10,8 @@
     <input id = "ImageDescription" placeholder="Description" />
     <form id='myForm'>
         <input type='file' id='UploadFiles' multiple/>
-        <button id='uploadBut'>Upload image to DB</button>
+        <button id = "PostImageBut">Post</button>
     </form>
-
-    <button id = "PostImageBut">Post</button>
     
     <br></br>
     
@@ -36,7 +34,10 @@
 
                 if(file.type.match("image/*")){
                     formData.append("images[]", file, "file");
-                    formData.append("user_id", 2);
+                    formData.append("user_id", localStorage.getItem("user_id"));
+                    formData.append("description", document.getElementById("ImageDescription").value);
+                    formData.append("title", document.getElementById("ImageTitle").value);
+                    console.log(formData.title);
                 } else {
                     alert("Please select an image file.");
                     return false;
@@ -57,29 +58,10 @@
             }
 
             xhr.send(formData);
-            console.log(myfiles.files);
+            console.log(uploadfiles.files);
         }
         
         
-                $(document).ready(function(){
-                document.getElementById("uploadBut").onclick = function(){
-                    $.ajax({
-                        url:"../controller/ImageCont.php",
-                        dataType:"html",
-                        type:"POST",
-                        data:{
-                            method:"insert",
-                            title:document.getElementById("ImageTitle").value,
-                            description:document.getElementById("ImageDescription").value,
-                            path:document.getElementById("UploadFiles").value
-                        },
-                        success:function(resp){
-                            alert("Image successfully posted!");
-                            }
-                        });
-                    }
-
-                });
     </script>
     
 </html>

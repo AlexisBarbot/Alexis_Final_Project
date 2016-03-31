@@ -36,6 +36,7 @@
                         console.log(resp);
                         user_id = resp[0].id;
                         sessionStorage.myid = resp[0].id;
+                        localStorage.setItem("user_id", resp[0].id);
                     }
                 });
             }
