@@ -20,7 +20,7 @@
                                 dataType:"json",
                                 type:"POST",
                                 data:{
-                                    method:"delete_comment",
+                                    method:"delete",
                                     commentId: id
                                     
                                 },
@@ -34,9 +34,9 @@
                             }
     
     var updateComment = function(id){
-                            //console.log(document.getElementById("EditTitleInput" + id).value);
+                            console.log(document.getElementById("EditCommentInput" + id).value);
                             $.ajax({
-                                url:"../controller/ImageCont.php",
+                                url:"../controller/CommentCont.php",
                                 dataType:"json",
                                 type:"POST",
                                 data:{
@@ -72,7 +72,7 @@
                         
                             var pUserComment = document.createElement("p");
                             pUserComment.innerHTML = gallery[i].text;
-                            console.log(gallery[i].comment);
+                            console.log(gallery[i].text);
                             document.getElementById("display").appendChild(pUserComment);
                             
                             var editComment = document.createElement("input");

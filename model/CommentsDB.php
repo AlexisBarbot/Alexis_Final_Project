@@ -22,13 +22,14 @@ function display_comments(){
 function display_user_comments(){
     global $db;
     
-    $query = "SELECT text FROM `comments` WHERE user_id = ".$_POST['userId']."";
+    $query = "SELECT * FROM `comments` WHERE user_id = ".$_POST['userId']."";
     $result = $db->query($query);
     echo json_encode($result->fetchAll());
 }
 
 function delete_comment(){ 
     global $db;
+    echo $_POST["commentId"];
     
     $query = "DELETE FROM comments WHERE id = ".$_POST['commentId']."";
     $result = count($db->query($query));
@@ -37,9 +38,10 @@ function delete_comment(){
 
 function update_comment(){
     global $db;
-    
+    echo "word";
     $query = "UPDATE `finalproject`.`comments` SET `text` = '".$_POST['text']."' WHERE `comments`.`id` = '".$_POST['commentId']."';";
     $result = count($db->query($query));
+    echo $query;
     echo json_encode($result);
 }
 
