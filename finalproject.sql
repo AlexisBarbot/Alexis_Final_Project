@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Mar 31, 2016 at 08:22 AM
+-- Generation Time: Apr 01, 2016 at 02:42 AM
 -- Server version: 5.5.42
 -- PHP Version: 5.6.10
 
@@ -25,7 +25,29 @@ CREATE TABLE `comments` (
   `text` varchar(100) NOT NULL,
   `user_id` int(11) NOT NULL,
   `image_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `comments`
+--
+
+INSERT INTO `comments` (`id`, `text`, `user_id`, `image_id`) VALUES
+(1, 'test vconnebt', 4, 27),
+(2, 'test sdfdfssdfdfsdfssdffsd', 4, 27),
+(3, 'test sdfdfssdfdfsdfssdffsd', 4, 9),
+(4, 'vcsdfvffff', 4, 9),
+(5, '', 4, 9),
+(6, 'Wow sick database bro', 2, 10),
+(8, 'sdfsdfdsf', 2, 9),
+(9, 'hiiii', 2, 9),
+(11, 'hello', 2, 9),
+(12, 'yayayyayayyyyyyy', 2, 10),
+(13, 'sdfsdfggg', 2, 10),
+(14, 'HELLO', 2, 10),
+(15, 'LOL', 2, 29),
+(16, 'Hahaha', 2, 29),
+(17, 'So sweet', 2, 31),
+(18, 'Love his music', 2, 25);
 
 -- --------------------------------------------------------
 
@@ -39,7 +61,7 @@ CREATE TABLE `images` (
   `description` varchar(400) NOT NULL,
   `path` varchar(500) NOT NULL,
   `user_id` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `images`
@@ -50,7 +72,11 @@ INSERT INTO `images` (`id`, `title`, `description`, `path`, `user_id`) VALUES
 (10, 'FHJKAH', 'djhkajkd', '../img/2/b06b749ea945dfafe0a6.jpg', 2),
 (11, 'DDA', 'ADAD', '../img/2/c811a45a7944d6241663.jpg', 2),
 (12, 'FAHkjjjjjjjjj', 'jjjjjjjjj', '../img/2/4f3f1c07dcb64f21000b.jpg', 2),
-(25, 'Stevie Wonder', 'Stevie Wonderful', '../img/3/83d6a97fe7c64b7e4238.jpg', 3);
+(25, 'Stevie Wonder', 'Stevie Wonderful', '../img/3/83d6a97fe7c64b7e4238.jpg', 3),
+(27, 'Mr. Bean', 'Could it be?', '../img/4/e1f1c2e6b144b33e62bd.jpg', 4),
+(29, 'Fire', 'Swag', '../img/4/f992d8e6f1f18b30150f.jpg', 4),
+(31, 'LOLOLOL', 'Keeeee-yute', '../img/4/e77a45313a71abbe522f.jpg', 4),
+(32, 'Willie Wonka', 'So true', '../img/4/0769c7447cbafc457c7e.jpg', 4);
 
 -- --------------------------------------------------------
 
@@ -62,7 +88,7 @@ CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `username` varchar(200) NOT NULL,
   `password` varchar(400) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `users`
@@ -71,7 +97,9 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `username`, `password`) VALUES
 (1, 'A', 'bbbb'),
 (2, 'AAA', 'AAA'),
-(3, 'Roger', 'Roger');
+(3, 'Roger', 'Roger'),
+(4, 'Alexis', 'Alexis'),
+(5, 'Alex', 'Alex');
 
 --
 -- Indexes for dumped tables
@@ -109,17 +137,17 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=19;
 --
 -- AUTO_INCREMENT for table `images`
 --
 ALTER TABLE `images`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=27;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=34;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 --
 -- Constraints for dumped tables
 --
