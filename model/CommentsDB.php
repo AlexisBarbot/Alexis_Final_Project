@@ -14,9 +14,33 @@ function add_comment(){
 function display_comments(){
     global $db;
     
-    $query = "SELECT text FROM `comments` WHERE id = ".$_POST['imageId']."";
+    $query = "SELECT text FROM `comments` WHERE image_id = ".$_POST['imageId']."";
     $result = $db->query($query);
     echo json_encode($result->fetchAll());
+}
+
+function display_user_comments(){
+    global $db;
+    
+    $query = "SELECT text FROM `comments` WHERE user_id = ".$_POST['userId']."";
+    $result = $db->query($query);
+    echo json_encode($result->fetchAll());
+}
+
+function delete_comment(){ 
+    global $db;
+    
+    $query = "DELETE FROM comments WHERE id = ".$_POST['commentId']."";
+    $result = count($db->query($query));
+    echo json_encode($result);
+}
+
+function update_comment(){
+    global $db;
+    
+    $query = "UPDATE `finalproject`.`comments` SET `text` = '".$_POST['text']."' WHERE `comments`.`id` = '".$_POST['commentId']."';";
+    $result = count($db->query($query));
+    echo json_encode($result);
 }
 
 ?>

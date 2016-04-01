@@ -45,17 +45,19 @@
                                 dataType:"html",
                                 type:"POST",
                                 data:{
-                                    method:"display_comments",
+                                    method:"display",
                                     imageId: id
                                 },
                                 success:function(resp){
                                     console.log(JSON.parse(resp));
                                     var gallery2 = JSON.parse(resp);
-                                    for(var i = 0; i<gallery.length;i++){
+                                    for(var i = 0; i<gallery2.length;i++){
 
                                         var pComment = document.createElement("p");
-                                        pComment.innerHTML = gallery2[i].comment;
-                                        document.getElementById("display").appendChild(pComment);
+                                        pComment.innerHTML = gallery2[i].text;
+                                        document.getElementById("DisplayDivComment" + id).appendChild(pComment);
+                                        
+                                        
                                     }
                                 }
                             });
